@@ -10,7 +10,7 @@ from pathlib import Path
 
 # Constantes de directorios y límites
 ARCHIVOS_DIR = "archivos"
-PLANTILLA_PATH = "plantillas/plantilla_base.xlsx"
+PLANTILLA_PATH = "Plantillas/plantilla_base.xlsx"
 MAX_FILA_PERMITIDA = 300 # Fila máxima permitida para datos (hasta 219)
 FILA_ENCABEZADO = 10 
 
