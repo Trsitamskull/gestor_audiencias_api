@@ -1,0 +1,4 @@
+POST http://127.0.0.1:8000/crear_archivo/?nombre=test_audiencia
+Content-Type: application/json
+
+{}
