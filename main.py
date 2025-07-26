@@ -21,6 +21,10 @@ BASE_URL = "http://127.0.0.1:8000"
 @app.post("/crear_archivo/")
 def crear_archivo(nombre: str):
     try:
+        # Asegura que termine en .xlsx
+        if not nombre.endswith('.xlsx'):
+            nombre += '.xlsx'
+        
         ruta = excel_utils.crear_copia_plantilla(nombre)
         return {"ruta": ruta}
     except Exception as e:
