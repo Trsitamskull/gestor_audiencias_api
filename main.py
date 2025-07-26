@@ -1,6 +1,7 @@
 from fastapi import FastAPI, HTTPException, Response
 from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 import excel_utils
 import os
 
@@ -18,9 +19,14 @@ app.add_middleware(
 # Constante para la URL base
 BASE_URL = "http://127.0.0.1:8000"
 
+# Modelo para recibir el nombre en el body JSON
+class CrearArchivoRequest(BaseModel):
+    nombre: str
+
 @app.post("/crear_archivo/")
-def crear_archivo(nombre: str):
+def crear_archivo(request: CrearArchivoRequest):  # <-- Cambiado para recibir JSON
     try:
+        nombre = request.nombre
         # Asegura que termine en .xlsx
         if not nombre.endswith('.xlsx'):
             nombre += '.xlsx'
